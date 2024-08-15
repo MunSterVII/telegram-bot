@@ -1,0 +1,28 @@
+name: Scheduled Script
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the script
+        run: node index.js
+        env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          CHAT_USERNAME: ${{ secrets.CHAT_USERNAME }}
+          MESSAGE_COMMAND: ${{ secrets.MESSAGE_COMMAND }}
