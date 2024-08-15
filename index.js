@@ -1,37 +1,20 @@
 require('dotenv').config();
-const input = require("input"); // npm i input
 const { TelegramClient, Api } = require("telegram");
 const { StringSession } = require("telegram/sessions");
-
-const SessionFileHandler = require('./SessionFileHandler.js');
-
-const sessionFile = new SessionFileHandler('session');
 
 const apiId = Number(process.env.API_ID);
 const apiHash = process.env.API_HASH;
 
 (async () => {
-  const sessionSave = await sessionFile.read();
-  const stringSession = new StringSession(sessionSave || ""); // fill this later with the value from session.save()
-
-  console.log("Loading interactive example...");
+  const stringSession = new StringSession(process.env.STRING_SESSION || ""); // fill this later with the value from session.save()
 
   const client = new TelegramClient(stringSession, apiId, apiHash, {
     connectionRetries: 5,
   });
 
-  await client.start({
-    phoneNumber: async () => await input.text("Please enter your number: "),
-    password: async () => await input.text("Please enter your password: "),
-    phoneCode: async () =>
-      await input.text("Please enter the code you received: "),
-    onError: (err) => console.log(err),
-  });
+  await client.start();
 
   console.log("You should now be connected.");
-
-  await sessionFile.write(client.session.save()); // Save this string to avoid logging in again
-
 
   const username = process.env.CHAT_USERNAME;
   
