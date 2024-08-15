@@ -27,3 +27,4 @@ jobs:
           API_HASH: ${{ secrets.API_HASH }}
           CHAT_USERNAME: ${{ secrets.CHAT_USERNAME }}
           MESSAGE_COMMAND: ${{ secrets.MESSAGE_COMMAND }}
+          STRING_SESSION: ${{ secrets.STRING_SESSION }}
