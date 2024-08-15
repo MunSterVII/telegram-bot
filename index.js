@@ -12,7 +12,7 @@ const apiHash = process.env.API_HASH;
     connectionRetries: 5,
   });
 
-  await client.start({});
+  await client.start();
 
   console.log("You should now be connected.");
 
