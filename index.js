@@ -3,7 +3,7 @@ const input = require("input"); // npm i input
 const { TelegramClient, Api } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 
-const SessionFileHandler = require('./SessionFileHandler');
+const SessionFileHandler = require('./SessionFileHandler.js');
 
 const sessionFile = new SessionFileHandler('session');
 
