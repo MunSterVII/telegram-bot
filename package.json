@@ -12,6 +12,7 @@
     "standard": "^17.1.0"
   },
   "dependencies": {
+    "input": "^1.0.1",
     "telegram": "^2.23.10"
   }
 }
